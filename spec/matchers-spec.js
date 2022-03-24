@@ -32,3 +32,27 @@ describe("Suíte de testes do toEqual", function(){
         expect(obj1).not.toEqual(obj2);
     });
 });
+
+describe ("Suíte do toMatch",function(){
+    var textoComparar = "Curso de testes com Jasmine";
+    it ("deve validar o uso do matcher 'toMatch'",function(){
+        expect(textoComparar).toMatch(/Jasmine/);
+        expect(textoComparar).toMatch(/Jasmine/);
+        expect(textoCompararCopia).toMatch(/Jasmine/i);
+        expect(textoComparar).toMatch(/Javascript/);
+        expect ("14//12/2016").toMatch(/^\d{2}\/\d{2\/\d{4}$/);
+    });
+});
+
+describe ("Suíte do testes toBeDefined",function(){
+    var numero = 10;
+    var texto;
+    var obj = {'valor' : 10};
+    it ("deve validar o uso do matcher 'toBeDefined'",function(){
+        expect(numero).toBeDefined();
+        expect(texto).toBeDefined();
+        expect(obj.valor).toBeDefined();
+        expect(obj.mensagem).not.toBeDefined();
+    });
+});
+
