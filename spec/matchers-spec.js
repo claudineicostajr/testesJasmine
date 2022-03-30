@@ -157,3 +157,20 @@ describe ("Suite de testes do toThrow", function(){
         expect(semErro).not.toThrow();
     });
 });
+
+describe("Suíte de testes do matcher 'toThrowError'", function(){
+    var calcularDobro = function(numero) {
+        if(numero <= 0){
+            throw new TypeError("o numero deve ser maior que 0.");
+        }
+        return numero * numero;
+    };
+    it ("deve validar o uso do matcher 'toThrowError'",function(){
+        expect(function() {calcularDobro(0) }).toThrowError();
+        expect(function() {calcularDobro(0) }).toThrowError("o numero deve ser maior que 0.");
+        expect(function() {calcularDobro(0) }).toThrowError(/ maior que 0/);
+        expect(function() {calcularDobro(0) }).toThrowError(TypeError);
+        expect(function() {calcularDobro(0) }).toThrowError(TypeError, "o numero deve ser maior que 0.");
+        expect(calcularDobro).not.toThrowError();
+    });
+});
