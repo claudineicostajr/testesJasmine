@@ -134,3 +134,26 @@ describe ("Suite de tesets do toBeLessThan", function(){
     });
 });
 
+describe ("Suite de testes do toBeGreaterThan", function(){
+    const PI = 3.1415;
+    var numero = 4;
+    it("deve validar o uso do matcher 'toBeGreaterThan'", function(){
+        expect(numero).toBeGreaterThan(PI);
+        expect("3.2").toBeGreaterThan(PI);
+        expect(2).not.toBeGreaterThan(PI);
+        expect(PI).not.toBeGreaterThan(PI);
+    });
+});
+
+describe ("Suite de testes do toThrow", function(){
+    var comErro = function(){
+    return numero * 10;
+    };
+    var semErro = function(numero){
+    return numero * 10;
+    };
+    it("deve validar o uso do matcher 'toThrow'", function(){
+        expect(comErro).toThrow();
+        expect(semErro).not.toThrow();
+    });
+});
