@@ -249,3 +249,23 @@ describe("suite de testes do afterAll", function(){
     });
 });
 
+describe ("suite de testes - aninhando suites", function(){
+    var contadorExterno = 0;
+    beforeEach(function(){
+        contadorExterno++;
+    });
+    it("deve ter incrementado o contador externo para 1", function(){
+        expect(contadorExterno).toEqual(1);
+    });
+
+    describe("suite aninhda a anterior", function(){
+        var contadorInterno = 1;
+        beforeEach(function(){
+            contadorInterno++;
+        });
+        it("deve conter o valor '2' para ambos contadores", function(){
+            expect(contadorInterno).toEqual(contadorExterno);
+        });
+    });
+});
+
