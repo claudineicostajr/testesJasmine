@@ -174,3 +174,45 @@ describe("Suíte de testes do matcher 'toThrowError'", function(){
         expect(calcularDobro).not.toThrowError();
     });
 });
+
+describe ("testa a função 'fail' de falha manual", function(){
+    var operacao = function(dveExecutar, callBack){
+        if(deveExecutar){
+            callBack();
+        }
+    };
+    it("não deve executar a função de callback", function(){
+        operacao(false, function(){
+            fail ("função de callback foi executada");
+        });
+    });
+});
+
+describe ("suite de testes do beforeEach", function(){
+    var contador = 0;
+    beforeEach(function(){
+        contador++;
+    })
+    it("deve exibir o contador com valor 1", function(){
+        expect(contador).toEqual(1);
+    });
+    it("deve exibir o contador com valor 2", function(){
+        expect(contador).toEqual(2);
+    });
+});
+
+describe("suite de testes do afterEach", function(){
+    var contador = 0;
+    beforeEach(function(){
+        contador++;
+    });
+    afterEach(function(){
+        contador = 0;
+    });
+    it("deve exibir o contador com valor 1", function(){
+        expect(contador).toEqual(1);
+    });
+    it("deve continuar exibindo o contador com valor 1", function(){
+        expect(contador).toEqual(1);
+    });
+});
